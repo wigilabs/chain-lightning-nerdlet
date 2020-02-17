@@ -99,8 +99,26 @@ export default class ChainLightingAppNerdlet extends React.Component {
               <img src="https://pbs.twimg.com/profile_images/463695202377420800/Puzeh-5R_400x400.jpeg" alt="description of image"/>
             </article>
             <TableChart
-                  id="dataTable"
+                  id="dataTableNagios"
                   query={"SELECT * FROM " + this.state.value + " SINCE 1 week ago LIMIT 1"}
+                  accountId={this.accountId}
+                  className="chart2"
+                />
+            <TableChart
+                  id="dataTableSplunk"
+                  query={"SELECT * FROM splunkHttp SINCE 1 week ago LIMIT 1"}
+                  accountId={this.accountId}
+                  className="chart2"
+                />
+             <TableChart
+                  id="dataTableZabbixLocal"
+                  query={"SELECT * FROM zabbixHostLocal SINCE 1 week ago LIMIT 1"}
+                  accountId={this.accountId}
+                  className="chart2"
+                />
+             <TableChart
+                  id="dataTableZabbixRemote"
+                  query={"SELECT * FROM zabbixHostRemote SINCE 1 week ago LIMIT 1"}
                   accountId={this.accountId}
                   className="chart2"
                 />
