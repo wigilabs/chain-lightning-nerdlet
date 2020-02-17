@@ -1,0 +1,140 @@
+/* reset */
+body, p {
+    margin: 0;
+  }
+  * {
+    box-sizing: border-box;
+  }
+
+  /* body */
+  body {
+    background: black;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  /* wrapper */
+  .wrapper {
+    max-width: 1300px;
+    margin: auto;
+  }
+
+  /* header */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+
+  /* logo */
+  .logo {
+    color: white;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+  }
+  .logo span {
+    color: #14FFFF;
+    text-shadow: 0px 0px 5px #14FFFF;
+  }
+  .logo img {
+    width: 72px;
+    margin-right: 8px;
+  }
+
+  /* avatar */
+  .avatar img {
+    width: 80px;
+  }
+
+  /* box */
+  .box {
+    height: 312px;
+    width: 664px;
+    border: solid 6px #032328;
+    margin: 200px auto 0 auto;
+    position: relative;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* service */
+  .service {
+    height: 72px;
+    width: 72px;
+    border: solid 1px #03F2FC;
+    border-radius: 50%;
+    padding: 16px;
+    background: rgba(3,242,252,0.35);
+  }
+  .service img {
+    width: 100%;
+  }
+  .service.left {
+    position: absolute;
+    top: 50%;
+    left: -225px;
+    transform: translate(0, -50%);
+  }
+  .service.top-left {
+    position: absolute;
+    left: 8%;
+    top: -150px;
+  }
+  .service.top-right {
+    position: absolute;
+    right: 8%;
+    top: -150px;
+  }
+  .service.right {
+    position: absolute;
+    top: 50%;
+    right: -225px;
+    transform: translate(0, -50%);
+  }
+  .service.bottom-left {
+    position: absolute;
+    left: 8%;
+    bottom: -150px;
+  }
+  .service.bottom-right {
+    position: absolute;
+    right: 8%;
+    bottom: -150px;
+  }
+
+  /* text */
+  .text {
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    padding: 0 40px;
+  }
+  .text span {
+    color: #03F2FC;
+  }
+
+  /* canvas */
+  .canvas {
+    height: 50px;
+  }
+
+  ul {
+    color: black;
+    margin:15px;
+  }
+  span {
+color:
+#14FFFF;
+text-shadow: 0px 0px 5px #14FFFF;
+}
+
+.chart2 {
+    color:black;
+    width:100%;
+    height: 100%;
+}
