@@ -57,7 +57,6 @@ export default class ChainLightingAppNerdlet extends React.Component {
                 columnSpan={4}
                 style={{backgroundColor: ""}}
             >
-
             </GridItem>
             <GridItem
                 columnSpan={2}
@@ -99,14 +98,12 @@ export default class ChainLightingAppNerdlet extends React.Component {
             <article className="service bottom-left" style={{backgroundImage: 'linear-gradient(90deg, #14FFFF 30%, transparent 30%)'}}>
               <img src="https://pbs.twimg.com/profile_images/463695202377420800/Puzeh-5R_400x400.jpeg" alt="description of image"/>
             </article>
-
             <TableChart
                   id="dataTable"
                   query={"SELECT * FROM " + this.state.value + " SINCE 1 week ago LIMIT 1"}
                   accountId={this.accountId}
                   className="chart2"
                 />
-                    
           </div>
             </StackItem>
         </Stack>
