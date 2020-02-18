@@ -55,9 +55,26 @@ export default class ChainLightingAppNerdlet extends React.Component {
             let content = JSON.parse(container.innerText)
             console.log('content: ', content)
 
+            let obj = content[0].data[0]
+
+            // let a = content[0]
+            // console.log('a: ', a)
+
+            // let data = a.data
+            // console.log('data: ', data)
+
+            // let obj = data[0]
+            console.log('obj: ', obj)
+
+            for (var k in obj){
+                let val = obj[k]
+
+                console.log('k: ', k)
+                console.log('val: ', val)
+            }
 
 
-        }, 300)
+        }, 1000)
       }
 
     render() {
