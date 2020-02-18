@@ -24,9 +24,7 @@ import {
     zabbixHostRemote,
     JsonChart
 } from "nr1";
-
 // https://docs.newrelic.com/docs/new-relic-programmable-platform-introduction
-
 export default class ChainLightingAppNerdlet extends React.Component {
     constructor(props) {
         super(props);
@@ -47,36 +45,28 @@ export default class ChainLightingAppNerdlet extends React.Component {
 
     componentDidMount() {
         console.log('componentDidMount ...')
-
         setTimeout(function () {
             let container = document.querySelector('.AFAEAU--vz--chart-container')
             console.log('container: ', container)
-
             let content = JSON.parse(container.innerText)
             console.log('content: ', content)
-
             let obj = content[0].data[0]
-
-            // let a = content[0]
-            // console.log('a: ', a)
-
-            // let data = a.data
-            // console.log('data: ', data)
-
-            // let obj = data[0]
             console.log('obj: ', obj)
-
-            for (var k in obj){
+            let stat=0
+            for (var k in obj) {
                 let val = obj[k]
-
                 console.log('k: ', k)
                 console.log('val: ', val)
-            }
-
-
+                var v=val.includes("OK");
+                if (v){
+                    stat=stat+1 //sum 1
+                } else {
+                    stat=stat //default
+                }
+                console.log("SCORE: " + stat)
+                                  }
         }, 1000)
       }
-
     render() {
         const nrql="SELECT * FROM NagiosReport SINCE 1 week ago"
         const innerText = require('react-innertext');
@@ -151,7 +141,5 @@ export default class ChainLightingAppNerdlet extends React.Component {
             </StackItem>
         </Stack>
         );
-        var nuke = document.getElementById("dataTableNagios").innerText
-        console.log(nuke)
     }
 }
