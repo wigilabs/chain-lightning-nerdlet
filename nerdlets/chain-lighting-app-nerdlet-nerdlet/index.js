@@ -44,10 +44,29 @@ export default class ChainLightingAppNerdlet extends React.Component {
       onSubmit(e) {
         e.preventDefault();
       }
+
+    componentDidMount() {
+        console.log('componentDidMount ...')
+
+        setTimeout(function () {
+            let container = document.querySelector('.AFAEAU--vz--chart-container')
+            console.log('container: ', container)
+
+            let content = JSON.parse(container.innerText)
+            console.log('content: ', content)
+
+
+
+        }, 300)
+      }
+
     render() {
         const nrql="SELECT * FROM NagiosReport SINCE 1 week ago"
         const innerText = require('react-innertext');
          console.log("js: working!")
+
+         console.log('JsonChart: ', JsonChart)
+
         return (
             <Stack
             fullWidth
