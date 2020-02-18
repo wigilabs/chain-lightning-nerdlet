@@ -55,6 +55,8 @@ export default class ChainLightingAppNerdlet extends React.Component {
             let content = JSON.parse(container.innerText)
             console.log('content: ', content)
             let obj = content[0].data[0]
+            obj.x="***"
+            obj.timestamp="***"
             console.log('obj: ', obj)
             let stat=0
             for (var k in obj) {
@@ -62,44 +64,38 @@ export default class ChainLightingAppNerdlet extends React.Component {
                 console.log('k: ', k)
                 console.log('val: ', val)
                 var v=val.includes("OK");
-                if (v){
+                if (v) {
                     stat=stat+1 //sum 1
-                } else {
+                       } else {
                     stat=stat //default
-                }
-                console.log("SCORE: " + stat)
-                                  }
+                          }
+                console.log("SCORE : " + stat)       
+                        }
+            console.log("FINAL RESULT : " + stat/8)
         }, 1000)
       }
     render() {
-        const nrql="SELECT * FROM NagiosReport SINCE 1 week ago"
-        const innerText = require('react-innertext');
+         const nrql="SELECT * FROM NagiosReport SINCE 1 week ago"
+         const innerText = require('react-innertext');
          console.log("js: working!")
-
          console.log('JsonChart: ', JsonChart)
-
+        
         return (
             <Stack
             fullWidth
             horizontalType={Stack.HORIZONTAL_TYPE.FILL}
             directionType={Stack.DIRECTION_TYPE.VERTICAL}>
-
         <StackItem >
-
         <div className="wrapper">
-
             <header className="header">
               <div className="logo">
                 <img src={logo} /> Chain <span>Lightning</span>
               </div>
-
               <div className="avatar">
                 <img src={avatar} />
               </div>
             </header>
-
             <section>
-
                 <div className="box">
                     <article className="service left" style={{backgroundImage: 'linear-gradient(90deg, #14FFFF 100%, transparent 100%)'}}>
                       <img src="https://i1.wp.com/sobrebits.com/wp-content/uploads/2018/05/Nagios-logo.png?w=500&ssl=1" alt="description of image"/>
@@ -126,11 +122,8 @@ export default class ChainLightingAppNerdlet extends React.Component {
                        className="chart2"
                       />
                   </div>
-
               </section>
-
           </div>
-
             </StackItem>
         </Stack>
         );
