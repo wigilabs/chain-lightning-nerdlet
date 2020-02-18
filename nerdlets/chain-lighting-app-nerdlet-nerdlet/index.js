@@ -1,4 +1,5 @@
 import React from 'react';
+import innerText from 'react-innertext';
 import {
     Grid,
     GridItem,
@@ -34,8 +35,8 @@ export default class ChainLightingAppNerdlet extends React.Component {
             value: "NagiosReport",
             showModal: false
           };
-    this.handleChange = this.handleChange.bind(this);
-    this.onSubmit = this.handleChange.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.onSubmit = this.handleChange.bind(this);
     }
     handleChange(e) {
         this.setState({ value: e.target.value });
@@ -45,6 +46,8 @@ export default class ChainLightingAppNerdlet extends React.Component {
       }
     render() {
         const nrql="SELECT * FROM NagiosReport SINCE 1 week ago"
+        const innerText = require('react-innertext');
+         console.log("js: working!")
         return (
             <Stack
             fullWidth
@@ -102,33 +105,17 @@ export default class ChainLightingAppNerdlet extends React.Component {
             <article className="service bottom-left" style={{backgroundImage: 'linear-gradient(90deg, #14FFFF 30%, transparent 30%)'}}>
               <img src="https://pbs.twimg.com/profile_images/463695202377420800/Puzeh-5R_400x400.jpeg" alt="description of image"/>
             </article>
-            <JsonChart
-                  id="dataTableNagios"
-                  query={"SELECT * FROM " + this.state.value + " SINCE 1 week ago LIMIT 1"}
-                  accountId={this.accountId}
-                  className="chart2"
-                />
-            <JsonChart
-                  id="dataTableSplunk"
-                  query={"SELECT * FROM splunkHttp SINCE 1 week ago LIMIT 1"}
-                  accountId={this.accountId}
-                  className="chart2"
-                />
-             <JsonChart
-                  id="dataTableZabbixLocal"
-                  query={"SELECT * FROM zabbixHostLocal SINCE 1 week ago LIMIT 1"}
-                  accountId={this.accountId}
-                  className="chart2"
-                />
-             <JsonChart
-                  id="dataTableZabbixRemote"
-                  query={"SELECT * FROM zabbixHostRemote SINCE 1 week ago LIMIT 1"}
-                  accountId={this.accountId}
-                  className="chart2"
-                />
+              <JsonChart
+               id="dataTableNagios"
+               query={"SELECT * FROM " + this.state.value + " SINCE 1 week ago LIMIT 1"}
+               accountId={this.accountId}
+               className="chart2"
+              />
           </div>
             </StackItem>
         </Stack>
         );
+        var nuke = document.getElementById("dataTableNagios").innerText
+        console.log(nuke)
     }
 }
