@@ -189,10 +189,10 @@ export default class ChainLightingAppNerdlet extends React.Component {
                     <article className="service left" style={{backgroundImage: 'linear-gradient(90deg, #14FFFF ' + this.state.nagiosP+ '%, transparent ' + this.state.nagiosP+ '%)'}}>
                       <img src="https://i1.wp.com/sobrebits.com/wp-content/uploads/2018/05/Nagios-logo.png?w=500&ssl=1" alt="description of image"/>
                     </article>
-                    <article className="service top-left" style={{backgroundImage: 'linear-gradient(90deg, #14FFFF 0%, transparent 0%)'}}>
+                    <article className="service top-left" style={{backgroundImage: 'linear-gradient(90deg, #14FFFF ' + this.state.zabbixP + '%, transparent ' + this.state.zabbixP + '%)'}}>
                       <img src="https://clouding.io/kb/wp-content/uploads/2017/09/Z-Zabbix.png" alt="description of image"/>
                     </article>
-                    <article className="service top-right" style={{backgroundImage: 'linear-gradient(90deg, #14FFFF 100%, transparent 100%)'}}>
+                    <article className="service top-right" style={{backgroundImage: 'linear-gradient(90deg, #14FFFF ' + this.state.splunkP + '%, transparent ' + this.state.splunkP + '%)'}}>
                       <img src="https://i1.wp.com/miraget.com/wp-content/uploads/2018/11/b488ffd251ebf4fcdd8d2ab1be453989.png?resize=480%2C480&ssl=1" alt="description of image"/>
                     </article>
                     <article className="service right" style={{backgroundImage: 'linear-gradient(90deg, #14FFFF 100%, transparent 100%)'}}>
