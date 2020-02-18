@@ -35,7 +35,10 @@ export default class ChainLightingAppNerdlet extends React.Component {
         this.accountId = 2482859;
         this.state = {
             value: "NagiosReport",
-            showModal: false
+            showModal: false,
+            nagiosP: 100,
+            zabbixP: 100,
+            splunkP: 100
           };
         this.handleChange = this.handleChange.bind(this);
         this.onSubmit = this.handleChange.bind(this);
@@ -49,6 +52,9 @@ export default class ChainLightingAppNerdlet extends React.Component {
 
     componentDidMount() {
         console.log('componentDidMount ...')
+
+        let self = this
+
         setTimeout(function () {
             let container = document.querySelector('.AFAEAU--vz--chart-container')
             console.log('container: ', container)
@@ -72,6 +78,14 @@ export default class ChainLightingAppNerdlet extends React.Component {
                 console.log("SCORE : " + stat)
                         }
             console.log("FINAL RESULT : " + stat/8)
+
+
+            let p = stat / 8 * 100
+            console.log('p: ', p)
+
+            self.setState({nagiosP: p});
+            console.log('self.state.nagiosP: ', self.state.nagiosP)
+
         }, 1000)
       }
     render() {
@@ -97,7 +111,7 @@ export default class ChainLightingAppNerdlet extends React.Component {
             </header>
             <section>
                 <div className="box">
-                    <article className="service left" style={{backgroundImage: 'linear-gradient(90deg, #14FFFF 100%, transparent 100%)'}}>
+                    <article className="service left" style={{backgroundImage: 'linear-gradient(90deg, #14FFFF ' + this.state.nagiosP+ '%, transparent ' + this.state.nagiosP+ '%)'}}>
                       <img src="https://i1.wp.com/sobrebits.com/wp-content/uploads/2018/05/Nagios-logo.png?w=500&ssl=1" alt="description of image"/>
                     </article>
                     <article className="service top-left" style={{backgroundImage: 'linear-gradient(90deg, #14FFFF 0%, transparent 0%)'}}>
