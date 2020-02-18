@@ -69,7 +69,7 @@ export default class ChainLightingAppNerdlet extends React.Component {
                        } else {
                     stat=stat //default
                           }
-                console.log("SCORE : " + stat)       
+                console.log("SCORE : " + stat)
                         }
             console.log("FINAL RESULT : " + stat/8)
         }, 1000)
@@ -79,7 +79,7 @@ export default class ChainLightingAppNerdlet extends React.Component {
          const innerText = require('react-innertext');
          console.log("js: working!")
          console.log('JsonChart: ', JsonChart)
-        
+
         return (
             <Stack
             fullWidth
@@ -115,6 +115,14 @@ export default class ChainLightingAppNerdlet extends React.Component {
                     <article className="service bottom-left" style={{backgroundImage: 'linear-gradient(90deg, #14FFFF 30%, transparent 30%)'}}>
                       <img src="https://pbs.twimg.com/profile_images/463695202377420800/Puzeh-5R_400x400.jpeg" alt="description of image"/>
                     </article>
+
+                    <p className="text">Function    <span>80%</span></p>
+                    <canvas className="canvas" id="js-function"></canvas>
+                    <p className="text">Speed       <span>40%</span></p>
+                    <canvas className="canvas" id="js-speed"></canvas>
+                    <p className="text">Consistency <span>20%</span></p>
+                    <canvas className="canvas" id="js-consistency"></canvas>
+
                       <JsonChart
                        id="dataTableNagios"
                        query={"SELECT * FROM " + this.state.value + " SINCE 1 week ago LIMIT 1"}
