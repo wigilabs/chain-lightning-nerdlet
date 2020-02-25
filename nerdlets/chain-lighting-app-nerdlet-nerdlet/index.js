@@ -2,7 +2,12 @@ import React from 'react';
 
 import logo from './logo.png';
 import avatar from './avatar.png';
-
+import nagios     from './img/nagios.png'
+import zabbix     from './img/zabbix.svg'
+import splunk     from './img/splunk.png'
+import fortinet   from './img/fortinet.png'
+import cloudfloor from './img/cloudfloor.png'
+import geotrust   from './img/geotrust.png'
 import innerText from 'react-innertext';
 import {
     Grid,
@@ -184,13 +189,13 @@ export default class ChainLightingAppNerdlet extends React.Component {
             <section>
                 <div className="box">
                     <article className="service left" style={{backgroundImage: 'linear-gradient(90deg, #14FFFF ' + this.state.nagiosP+ '%, transparent ' + this.state.nagiosP+ '%)'}}>
-                      <img src="https://i1.wp.com/sobrebits.com/wp-content/uploads/2018/05/Nagios-logo.png?w=500&ssl=1" alt="description of image"/>
+                      <img src={nagios} alt="description of image"/>
                     </article>
                     <article className="service top-left" style={{backgroundImage: 'linear-gradient(90deg, #14FFFF ' + this.state.zabbixP + '%, transparent ' + this.state.zabbixP + '%)'}}>
-                      <img src="https://clouding.io/kb/wp-content/uploads/2017/09/Z-Zabbix.png" alt="description of image"/>
+                      <img src={zabbix} alt="description of image"/>
                     </article>
                     <article className="service top-right" style={{backgroundImage: 'linear-gradient(90deg, #14FFFF ' + this.state.splunkP + '%, transparent ' + this.state.splunkP + '%)'}}>
-                      <img src="https://i1.wp.com/miraget.com/wp-content/uploads/2018/11/b488ffd251ebf4fcdd8d2ab1be453989.png?resize=480%2C480&ssl=1" alt="description of image"/>
+                      <img src={splunk} alt="description of image"/>
                     </article>
                     <article className="service right" style={{backgroundImage: 'linear-gradient(90deg, #14FFFF 100%, transparent 100%)'}}>
                       <img src="https://en.groupeaccess.ca/wp-content/uploads/2017/01/Fortinet-logo-313x313.png" alt="description of image"/>
