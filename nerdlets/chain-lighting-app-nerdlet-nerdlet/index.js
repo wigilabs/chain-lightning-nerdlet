@@ -65,11 +65,9 @@ export default class ChainLightingAppNerdlet extends React.Component {
       let l = 650
       let speed       = new Lightning(document.getElementById('js-speed'),       l, 3.5)
       let consistency = new Lightning(document.getElementById('js-consistency'), l, 3.5)
-
-
-      let res = await axios.get('http://localhost:3000/api/nagios-events')
-      let nagios_events = res.data
-
+      // NAGIOS
+      let resNAGIOS = await axios.get('http://localhost:3000/api/nagios-events')
+      let nagios_events = resNAGIOS.data
       let nagios_p = calculateP(nagios_events)
       console.log('nagios_p: ', nagios_p)
 
@@ -78,6 +76,18 @@ export default class ChainLightingAppNerdlet extends React.Component {
           backgroundImage: 'linear-gradient(90deg, #14FFFF ' + nagios_p + '%, transparent ' + nagios_p + '%)'
         }
       })
+      // ZABBIX
+      let resZABBIX = await axios.get('http://localhost:3000/api/zabbix-events')
+      let zabbix_events = resZABBIX.data
+      let zabbix_p = calculateP(zabbix_events)
+      console.log('zabbix_p: ', zabbix_p)
+      this.setState({
+        zabbixP: {
+          backgroundImage: 'linear-gradient(90deg, #14FFFF ' + zabbix_p + '%, transparent ' + zabbix_p + '%)'
+        }
+      })
+     // SPLUNK
+     
     }
 
     render() {
