@@ -91,48 +91,54 @@ export default class ChainLightingAppNerdlet extends React.Component {
 
     render() {
       return (
-        <div className="wrapper">
+        <div class="wrapper">
 
-          <header className="header">
-            <div className="logo">
+          <header class="header">
+            <div class="logo">
               <img src={logo}/> Chain <span>Lightning</span>
             </div>
 
-            <div className="avatar">
+            <div class="avatar">
               <img src={avatar}/>
             </div>
           </header>
 
           <section>
 
-            <div className="box">
-              <article className="service left" style={this.state.nagiosP}>
+            <div class="box">
+              <article class="service left" style={this.state.nagiosP}>
                 <img src={nagios}/>
+                <span>SERVER</span>
               </article>
-              <article className="service top-left" style={this.state.zabbixP}>
+              <article class="service top-left" style={this.state.zabbixP}>
                 <img src={zabbix}/>
+                <span>APP</span>
               </article>
-              <article className="service top-right" style={this.state.splunkP}>
+              <article class="service top-right" style={this.state.splunkP}>
                 <img src={splunk}/>
+                <span>LOGS</span>
               </article>
-              <article className="service right" style={this.state.fortinetP}>
+              <article class="service right" style={this.state.fortinetP}>
                 <img src={fortinet}/>
+                <span>VPN</span>
               </article>
-              <article className="service bottom-right" style={this.state.cloudfloorP}>
+              <article class="service bottom-right" style={this.state.cloudfloorP}>
+                <span>CDN</span>
                 <img src={cloudfloor}/>
               </article>
-              <article className="service bottom-left" style={this.state.geotrustP}>
+              <article class="service bottom-left" style={this.state.geotrustP}>
                 <img src={geotrust}/>
+                <span>SSH</span>
               </article>
 
-              <p className="text">Function<span>{this.state.functionality}%</span></p>
-              <canvas className="canvas" id="js-function"></canvas>
+              <p class="text">Function<span>{this.state.functionality}%</span></p>
+              <canvas class="canvas" id="js-function"></canvas>
 
-              <p className="text">Speed<span>100%</span></p>
-              <canvas className="canvas" id="js-speed"></canvas>
+              <p class="text">Speed<span>100%</span></p>
+              <canvas class="canvas" id="js-speed"></canvas>
 
-              <p className="text">Consistency<span>100%</span></p>
-              <canvas className="canvas" id="js-consistency"></canvas>
+              <p class="text">Consistency<span>100%</span></p>
+              <canvas class="canvas" id="js-consistency"></canvas>
             </div>
 
           </section>
