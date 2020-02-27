@@ -1,5 +1,6 @@
 /* reset */
-body, p {
+body,
+p {
   margin: 0;
 }
 * {
@@ -9,7 +10,7 @@ body, p {
 /* body */
 body {
   background: black;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 #root {
@@ -40,8 +41,8 @@ body {
   font-size: 22px;
 }
 .logo span {
-  color: #14FFFF;
-  text-shadow: 0px 0px 5px #14FFFF;
+  color: #14ffff;
+  text-shadow: 0px 0px 5px #14ffff;
 }
 .logo img {
   width: 72px;
@@ -71,10 +72,10 @@ body {
 .service {
   height: 72px;
   width: 72px;
-  border: solid 1px #03F2FC;
+  border: solid 1px #03f2fc;
   border-radius: 50%;
   padding: 16px;
-  background: rgba(3,242,252,0.35);
+  background: rgba(3, 242, 252, 0.35);
 }
 .service img {
   width: 100%;
@@ -121,7 +122,7 @@ body {
   padding: 0 40px;
 }
 .text span {
-  color: #03F2FC;
+  color: #03f2fc;
 }
 
 /* canvas */

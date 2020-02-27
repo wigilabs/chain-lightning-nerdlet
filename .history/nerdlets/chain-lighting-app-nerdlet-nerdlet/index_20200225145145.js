@@ -30,27 +30,34 @@ export default class ChainLightingAppNerdlet extends React.Component {
     constructor(props) {
       super(props)
       this.state = {
-        nagiosP: {
-          backgroundImage: 'linear-gradient(90deg, #14FFFF 100%, transparent 100%)'
-        },
-        zabbixP: {
-          backgroundImage: 'linear-gradient(90deg, #14FFFF 100%, transparent 100%)'
-        },
-        splunkP: {
-          backgroundImage: 'linear-gradient(90deg, #14FFFF 100%, transparent 100%)'
-        },
-        fortinetP: {
-          backgroundImage: 'linear-gradient(90deg, #14FFFF 100%, transparent 100%)'
-        },
-        cloudfloorP: {
-          backgroundImage: 'linear-gradient(90deg, #14FFFF 100%, transparent 100%)'
-        },
-        geotrustP: {
-          backgroundImage: 'linear-gradient(90deg, #14FFFF 100%, transparent 100%)'
-        },
+          value: "SELECT * FROM NagiosReport SINCE 1 week ago LIMIT 1",
 
-        functionality: 100,
-      }
+          nagiosP: {
+            // backgroundImage: 'linear-gradient(90deg, #14FFFF ' + 100 + '%, transparent ' + 100 + '%)'
+            backgroundImage: 'linear-gradient(90deg, #14FFFF 100%, transparent 100%)'
+
+          },
+          zabbixP: {
+            // backgroundImage: 'linear-gradient(90deg, #14FFFF ' + 100 + '%, transparent ' + 100 + '%)'
+            backgroundImage: 'linear-gradient(90deg, #14FFFF 100%, transparent 100%)'
+
+          },
+          splunkP: {
+            // backgroundImage: 'linear-gradient(90deg, #14FFFF ' + 100 + '%, transparent ' + 100 + '%)'
+            backgroundImage: 'linear-gradient(90deg, #14FFFF 100%, transparent 100%)'
+
+          },
+          fortinetP: {
+            backgroundImage: 'linear-gradient(90deg, #14FFFF 100%, transparent 100%)'
+          },
+          cloudfloorP: {
+            backgroundImage: 'linear-gradient(90deg, #14FFFF 100%, transparent 100%)'
+          },
+          geotrustP: {
+            backgroundImage: 'linear-gradient(90deg, #14FFFF 100%, transparent 100%)'
+          },
+
+        }
     }
 
     async componentDidMount() {
@@ -58,35 +65,29 @@ export default class ChainLightingAppNerdlet extends React.Component {
       let l = 650
       let speed       = new Lightning(document.getElementById('js-speed'),       l, 3.5)
       let consistency = new Lightning(document.getElementById('js-consistency'), l, 3.5)
-
       // NAGIOS
       let resNAGIOS = await axios.get('http://localhost:3000/api/nagios-events')
       let nagios_events = resNAGIOS.data
       let nagios_p = calculateP(nagios_events)
       console.log('nagios_p: ', nagios_p)
-      this.setState({
-        nagiosP: { backgroundImage: 'linear-gradient(90deg, #14FFFF ' + nagios_p + '%, transparent ' + nagios_p + '%)' }
-      })
 
+      this.setState({
+        nagiosP: {
+          backgroundImage: 'linear-gradient(90deg, #14FFFF ' + nagios_p + '%, transparent ' + nagios_p + '%)'
+        }
+      })
       // ZABBIX
       let resZABBIX = await axios.get('http://localhost:3000/api/zabbix-events')
       let zabbix_events = resZABBIX.data
       let zabbix_p = calculateP(zabbix_events)
       console.log('zabbix_p: ', zabbix_p)
       this.setState({
-        zabbixP: { backgroundImage: 'linear-gradient(90deg, #14FFFF ' + zabbix_p + '%, transparent ' + zabbix_p + '%)' }
+        zabbixP: {
+          backgroundImage: 'linear-gradient(90deg, #14FFFF ' + zabbix_p + '%, transparent ' + zabbix_p + '%)'
+        }
       })
-
-      // SPLUNK
-      let splunk_p = 100
-      console.log('splunk_p: ', splunk_p)
-
-      // functionality
-      let functionality = ((nagios_p + zabbix_p + splunk_p) / 300 * 100).toFixed(2)
-      console.log('functionality: ', functionality)
-
-      this.setState({ functionality })
-      new Lightning(document.getElementById('js-function'), l, 2)
+     // SPLUNK
+     
     }
 
     render() {
@@ -125,13 +126,13 @@ export default class ChainLightingAppNerdlet extends React.Component {
                 <img src={geotrust}/>
               </article>
 
-              <p className="text">Function<span>{this.state.functionality}%</span></p>
+              <p className="text">Function<span>80%</span></p>
               <canvas className="canvas" id="js-function"></canvas>
 
-              <p className="text">Speed<span>100%</span></p>
+              <p className="text">Speed<span>40%</span></p>
               <canvas className="canvas" id="js-speed"></canvas>
 
-              <p className="text">Consistency<span>100%</span></p>
+              <p className="text">Consistency<span>20%</span></p>
               <canvas className="canvas" id="js-consistency"></canvas>
             </div>
 
