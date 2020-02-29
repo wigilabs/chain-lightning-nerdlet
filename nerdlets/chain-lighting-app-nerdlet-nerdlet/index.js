@@ -12,24 +12,22 @@ import cloudfloor from './img/cloudfloor.png'
 import geotrust   from './img/geotrust.png'
 
 import Lightning from './js/lightning.js'
+import Utils from './js/utils.js'
 
 
-function calculateP(a) {
-
-  let n = a.length
-  let count = 0
-
-  for (var i = 0; i < n; i++) {
-    if(a[i].value) count ++
-  }
-
-  return count / n * 100
-}
 
 export default class ChainLightingAppNerdlet extends React.Component {
     constructor(props) {
       super(props)
       this.state = {
+        nagiosData: {},
+        zabbixData: {},
+        splunkData: {},
+
+        nagiosFun: 100,
+        zabbixFun: 100,
+        splunkFun: 100,
+
         nagiosP: {
           backgroundImage: 'linear-gradient(90deg, #14FFFF 100%, transparent 100%)'
         },
@@ -50,10 +48,54 @@ export default class ChainLightingAppNerdlet extends React.Component {
         },
 
         functionality: 100,
+
+        details: false,
+
+        currentName: '',
+        currentImage: nagios,
+        currentTag: 'SERVER',
+        currentList: ['1', '2', '3', '4', '5'],
+        currentFun: 100,
+      }
+
+      this.showDetail = this.showDetail.bind(this)
+      this.close = this.close.bind(this)
+    }
+
+    close() {
+      this.setState({ details: false })
+    }
+
+    showDetail(service) {
+
+      this.setState({ details: true })
+
+      if(service == 'nagios') {
+
+        let list = this.state.nagiosData
+        let nagiosFun = this.state.nagiosFun
+
+        this.setState({ currentName: 'Nagios' })
+        this.setState({ currentImage: nagios })
+        this.setState({ currentTag: 'SERVER' })
+        this.setState({ currentList: list })
+        this.setState({ currentFun: nagiosFun })
+      }
+
+      if(service == 'zabbix') {
+        let list = this.state.zabbixData
+        let zabbixFun = this.state.zabbixFun
+        this.setState({ currentName: 'Zabbixs' })
+        this.setState({ currentImage: zabbix })
+        this.setState({ currentTag: 'APP' })
+        this.setState({ currentList: list })
+        this.setState({ currentFun: zabbixFun })
       }
     }
 
     async componentDidMount() {
+
+      // console.log('componentDidMount ...')
 
       let l = 650
       let speed       = new Lightning(document.getElementById('js-speed'),       l, 3.5)
@@ -62,8 +104,10 @@ export default class ChainLightingAppNerdlet extends React.Component {
       // NAGIOS
       let resNAGIOS = await axios.get('http://localhost:3000/api/nagios-events')
       let nagios_events = resNAGIOS.data
-      let nagios_p = calculateP(nagios_events)
-      console.log('nagios_p: ', nagios_p)
+      this.setState({ nagiosData: nagios_events })
+
+      let nagios_p = Utils.calculateP(nagios_events)
+      this.setState({ nagiosFun: nagios_p })
       this.setState({
         nagiosP: { backgroundImage: 'linear-gradient(90deg, #14FFFF ' + nagios_p + '%, transparent ' + nagios_p + '%)' }
       })
@@ -71,22 +115,27 @@ export default class ChainLightingAppNerdlet extends React.Component {
       // ZABBIX
       let resZABBIX = await axios.get('http://localhost:3000/api/zabbix-events')
       let zabbix_events = resZABBIX.data
-      let zabbix_p = calculateP(zabbix_events)
-      console.log('zabbix_p: ', zabbix_p)
+      console.log('zabbix_events: ', zabbix_events)
+      this.setState({ zabbixData: zabbix_events })
+
+      let zabbix_p = Utils.calculateP(zabbix_events)
+      this.setState({ zabbixFun: zabbix_p })
       this.setState({
         zabbixP: { backgroundImage: 'linear-gradient(90deg, #14FFFF ' + zabbix_p + '%, transparent ' + zabbix_p + '%)' }
       })
 
       // SPLUNK
       let splunk_p = 100
-      console.log('splunk_p: ', splunk_p)
+      // console.log('splunk_p: ', splunk_p)
 
       // functionality
       let functionality = ((nagios_p + zabbix_p + splunk_p) / 300 * 100).toFixed(2)
-      console.log('functionality: ', functionality)
+      // console.log('functionality: ', functionality)
 
       this.setState({ functionality })
       new Lightning(document.getElementById('js-function'), l, 2)
+
+      this.componentDidMount()
     }
 
     render() {
@@ -104,43 +153,71 @@ export default class ChainLightingAppNerdlet extends React.Component {
           </header>
 
           <section>
-
             <div class="box">
-              <article class="service left" style={this.state.nagiosP}>
+              <article class="service left" style={this.state.nagiosP} onClick={() => this.showDetail('nagios')}>
                 <img src={nagios}/>
-                <span>SERVER</span>
+                <span class="tag">SERVER</span>
+                <span class="line left"></span>
               </article>
-              <article class="service top-left" style={this.state.zabbixP}>
+              <article class="service top-left" style={this.state.zabbixP} onClick={() => this.showDetail('zabbix')}>
                 <img src={zabbix}/>
-                <span>APP</span>
+                <span class="tag">APP</span>
+                <span class="line top"></span>
               </article>
               <article class="service top-right" style={this.state.splunkP}>
                 <img src={splunk}/>
-                <span>LOGS</span>
+                <span class="tag">LOGS</span>
+                <span class="line top"></span>
               </article>
               <article class="service right" style={this.state.fortinetP}>
                 <img src={fortinet}/>
-                <span>VPN</span>
+                <span class="tag">VPN</span>
+                <span class="line right"></span>
               </article>
               <article class="service bottom-right" style={this.state.cloudfloorP}>
-                <span>CDN</span>
                 <img src={cloudfloor}/>
+                <span class="tag bottom">CDN</span>
+                <span class="line bottom"></span>
               </article>
               <article class="service bottom-left" style={this.state.geotrustP}>
                 <img src={geotrust}/>
-                <span>SSH</span>
+                <span class="tag bottom">SSH</span>
+                <span class="line bottom"></span>
               </article>
 
-              <p class="text">Function<span>{this.state.functionality}%</span></p>
-              <canvas class="canvas" id="js-function"></canvas>
+              <div className={!this.state.details ? '' : 'hide'}>
+                <p class="text">Function<span>{this.state.functionality}%</span></p>
+                <canvas class="canvas" id="js-function"></canvas>
 
-              <p class="text">Speed<span>100%</span></p>
-              <canvas class="canvas" id="js-speed"></canvas>
+                <p class="text">Speed<span>100%</span></p>
+                <canvas class="canvas" id="js-speed"></canvas>
 
-              <p class="text">Consistency<span>100%</span></p>
-              <canvas class="canvas" id="js-consistency"></canvas>
+                <p class="text">Consistency<span>100%</span></p>
+                <canvas class="canvas" id="js-consistency"></canvas>
+              </div>
+
+              <div className={this.state.details ? '' : 'hide'}>
+                <div class="details">
+                  <span class="close" onClick={this.close}>X</span>
+                  <header>
+                    <img src={this.state.currentImage} />&nbsp; {this.state.currentName}&nbsp;&nbsp; <span>{this.state.currentTag}</span>
+                  </header>
+                  <div class="sections">
+                    <div class="sections-headers">
+                      <p class="selected">Function {this.state.currentFun}%</p>
+                      <p>Speed 100%</p>
+                      <p>Consistency 100%</p>
+                    </div>
+                    <section class="sections-body">
+                      {this.state.currentList.map((item, index) => (
+                        <p key={index}><b>{item.name}</b>:&nbsp;&nbsp;<small>{item.msg}</small></p>
+                      ))}
+                    </section>
+                  </div>
+                </div>
+              </div>
+
             </div>
-
           </section>
 
         </div>
