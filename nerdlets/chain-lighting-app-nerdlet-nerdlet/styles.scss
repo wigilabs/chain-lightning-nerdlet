@@ -78,7 +78,7 @@ body {
   width: 72px;
   border: solid 1px #03F2FC;
   border-radius: 50%;
-  padding: 16px;
+  padding: 12px;
   background: rgba(3,242,252,0.35);
   cursor: pointer;
 }
@@ -236,4 +236,34 @@ body {
 }
 .details .sections .sections-body {
   padding: 16px 32px;
+}
+
+.details .sections .sections-body .element {
+  display: flex;
+}
+.details .sections .sections-body .element small {
+  color: #aaa;
+}
+
+.details .sections .sections-body .circle {
+  width: 8px;
+  height: 8px;
+
+  min-width: 8px;
+  min-height: 8px;
+
+  max-width: 8px;
+  max-height: 8px;
+
+  background: green;
+  border-radius: 50%;
+  margin-top: 4px;
+  margin-right: 8px;
+  margin-left: -16px;
+}
+.details .sections .sections-body .circle.WARNING {
+  background: yellow;
+}
+.details .sections .sections-body .circle.CRITICAL {
+  background: red;
 }

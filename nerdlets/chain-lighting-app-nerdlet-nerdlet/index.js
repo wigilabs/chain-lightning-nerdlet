@@ -210,7 +210,12 @@ export default class ChainLightingAppNerdlet extends React.Component {
                     </div>
                     <section class="sections-body">
                       {this.state.currentList.map((item, index) => (
-                        <p key={index}><b>{item.name}</b>:&nbsp;&nbsp;<small>{item.msg}</small></p>
+
+                        <div class="element">
+                          <span class={"circle " + item.state}></span>
+                          <p><b>{item.name}</b>:&nbsp;&nbsp;<small>{item.msg}</small></p>
+                        </div>
+
                       ))}
                     </section>
                   </div>
