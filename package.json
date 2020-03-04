@@ -1,25 +1,25 @@
 {
-    "private": true,
-    "name": "chain-lighting-app-nerdlet",
-    "description": "Nerdpack chain-lighting-app-nerdlet",
-    "version": "0.1.0",
-    "scripts": {
-        "start": "nr1 nerdpack:serve",
-        "test": "exit 0"
-    },
-    "nr1": {
-        "uuid": "92e9a61e-3576-4433-bc6c-0c3215bf395b"
-    },
-    "dependencies": {
-        "axios": "^0.19.2",
-        "prop-types": "^15.6.2",
-        "react": "^16.6.3",
-        "react-dom": "^16.6.3",
-        "react-innertext": "^1.1.5"
-    },
-    "browserslist": [
-        "last 2 versions",
-        "not ie < 11",
-        "not dead"
-    ]
+  "private": true,
+  "name": "chain-lighting-app-nerdlet",
+  "description": "Nerdpack chain-lighting-app-nerdlet",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "nr1 nerdpack:serve",
+    "test": "exit 0"
+  },
+  "nr1": {
+    "uuid": "d1340502-60f4-4a51-b8c3-64f5d951ad39"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "prop-types": "^15.6.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-innertext": "^1.1.5"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "not ie < 11",
+    "not dead"
+  ]
 }
