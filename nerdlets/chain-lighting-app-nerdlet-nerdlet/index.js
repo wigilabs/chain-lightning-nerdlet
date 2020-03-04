@@ -206,7 +206,7 @@ export default class ChainLightingAppNerdlet extends React.Component {
 
       // NAGIOS
 
-      let resNAGIOS = await axios.get('http://localhost:3000/api/nagios-events')
+      let resNAGIOS = await axios.get('https://chain-lightning-server.now.sh/api/nagios-events')
 
       let nagios_events = resNAGIOS.data
 
@@ -228,7 +228,7 @@ export default class ChainLightingAppNerdlet extends React.Component {
 
       // ZABBIX
 
-      let resZABBIX = await axios.get('http://localhost:3000/api/zabbix-events')
+      let resZABBIX = await axios.get('https://chain-lightning-server.now.sh/api/zabbix-events')
 
       let zabbix_events = resZABBIX.data
 
