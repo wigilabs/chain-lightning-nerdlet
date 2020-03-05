@@ -8,7 +8,7 @@
     "test": "exit 0"
   },
   "nr1": {
-    "uuid": "d1340502-60f4-4a51-b8c3-64f5d951ad39"
+    "uuid": "e6fb60ea-08d8-4965-b281-bfc50a512391"
   },
   "dependencies": {
     "axios": "^0.19.2",

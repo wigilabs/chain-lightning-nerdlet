@@ -1,7 +1,7 @@
 {
     "schemaType": "LAUNCHER",
     "id": "chain-lighting-app-nerdlet-launcher",
-    "description": "Describe me",
-    "displayName": "Chain Lighting",
+    "description": "Description",
+    "displayName": "Chain Lightning",
     "rootNerdletId": "chain-lighting-app-nerdlet-nerdlet"
 }
