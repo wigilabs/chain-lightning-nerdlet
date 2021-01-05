@@ -11,7 +11,7 @@
     "uuid": "e6fb60ea-08d8-4965-b281-bfc50a512391"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
